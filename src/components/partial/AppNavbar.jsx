@@ -191,9 +191,7 @@ const TopNavbar = ({ data }) => {
               Globals Settings
             </NavDropdown.Item>
             <NavDropdown.Divider />
-            {/* <NavDropdown.Item onClick={(ev) => logout(ev)}>
-              Logout
-            </NavDropdown.Item> */}
+            <NavDropdown.Item>Logout</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Container>

@@ -176,13 +176,14 @@ export const AppButton = ({
 };
 
 export const AppTable = ({
-  loading = {},
-  column = {},
-  data = {},
+  loading = false,
+  column = [],
+  data = [],
   columnVisibility = {},
   DetailPanel = {},
   ActionRow = {},
   topToolbar = {},
+  enableRowActions = true,
 }) => {
   return (
     <>
@@ -205,10 +206,10 @@ export const AppTable = ({
           columnVisibility: columnVisibility,
           density: "compact",
         }}
-        renderDetailPanel={DetailPanel ? DetailPanel : () => {}}
-        enableRowActions
-        renderRowActions={ActionRow ? ActionRow : () => {}}
-        renderTopToolbarCustomActions={topToolbar ? topToolbar : () => {}}
+        renderDetailPanel={DetailPanel ? DetailPanel : <></>}
+        enableRowActions={enableRowActions}
+        renderRowActions={ActionRow ? ActionRow : <></>}
+        renderTopToolbarCustomActions={topToolbar ? topToolbar : <></>}
       />
     </>
   );
@@ -218,15 +219,18 @@ export const AppCard = ({
   enableCardHeader = true,
   setCardHeader = { className: "", title: false },
   enableCardBody = true,
-  setCardBody = { className: "", body: false },
+  setCardBody = { className: "", content: false },
   enableCardFooter = false,
+  setCardFooter = { className: "", content: false },
 }) => {
   return (
     <Card>
       {enableCardHeader ? (
         enableCardHeader !== false ? (
           <Card.Header>
-            {setCardHeader.title === false ? "Example Title" : setCardHeader.title}
+            {setCardHeader.title === false
+              ? "Example Title"
+              : setCardHeader.title}
           </Card.Header>
         ) : (
           <></>
@@ -236,7 +240,7 @@ export const AppCard = ({
       )}
       {enableCardBody ? (
         enableCardBody !== false ? (
-          <Card.Body>{setCardBody.body}</Card.Body>
+          <Card.Body>{setCardBody.content}</Card.Body>
         ) : (
           <></>
         )
@@ -245,7 +249,9 @@ export const AppCard = ({
       )}
       {enableCardFooter ? (
         enableCardFooter !== false ? (
-          <Card.Footer className="text-muted">2 days ago</Card.Footer>
+          <Card.Footer className="text-muted">
+            {setCardFooter.content}
+          </Card.Footer>
         ) : (
           <></>
         )
