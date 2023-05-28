@@ -1,0 +1,74 @@
+.MuiButtonBase-root {
+  /* cursor: not-allowed;
+  pointer-events: auto; */
+  background-color: unset;
+}
+
+.btn-teal{
+    background-color: #008489;
+    border-color: #008489;
+    color: #FFFFFF;
+}
+.btn-teal:active{
+    background-color: #008489;
+    border-color: #008489;
+    color: #FFFFFF;
+}
+.btn-teal:focus{
+    background-color: #008489;
+    border-color: #008489;
+    color: #FFFFFF;
+}
+.btn-teal:hover{
+    background-color: #FFFFFF;
+    border-color: #008489;
+    color: #008489;
+}
+.btn-teal:disabled{
+    background-color: #FFFFFF;
+    border-color: #008489;
+    color: #008489;
+}
+
+.btn-danger{
+    background-color: #FFFFFF;
+    border-color: #DC3545;
+    color: #DC3545;
+}
+.btn-danger:hover{
+    background-color: #DC3545;
+    border-color: #DC3545;
+    color: #FFFFFF;
+}
+.btn-danger:active{
+    background-color: #DC3545;
+    border-color: #DC3545;
+    color: #FFFFFF;
+}
+.btn-danger:focus{
+    background-color: #DC3545;
+    border-color: #DC3545;
+    color: #FFFFFF;
+}
+.btn-danger:disabled{
+    background-color: #FFFFFF;
+    border-color: #DC3545;
+    color: #DC3545;
+}
+
+.icon-teal{
+    color: #008489;
+}
+.icon-primary{
+    color: #000000;
+}
+.icon-white{
+    color: #FFFFFF;
+}
+.icon-white:hover{
+    color: #008489;
+}
+
+.card-teal{
+    border-color: #008489;
+}

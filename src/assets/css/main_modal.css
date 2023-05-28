@@ -1,0 +1,25 @@
+/* 
+.app-modal{}
+.app-modal-title{}
+.app-modal-footer{}
+*/
+.app-modal-header{
+    padding: "0.5rem"
+}
+.app-modal-body{
+    overflow-y: scroll;
+    max-height: 590px;
+}
+.app-modal-body::-webkit-scrollbar{
+    display: none;
+}
+
+/* Modal Size */
+.modal-xxl{
+    width: 80%;
+    max-width: none;
+}
+.modal-xxl-95{
+    width: 95%;
+    max-width: none;
+}
