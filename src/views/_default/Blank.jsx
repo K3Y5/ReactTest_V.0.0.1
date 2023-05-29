@@ -1,13 +1,11 @@
 import React from "react";
+import { AppPageTitle } from "../../components/partial/UiElement";
 
 const Blank = () => {
   return (
     <>
-      <AppBreadcrumb title="Test Component" />
-      <AppWrapper>
-        Blank Content
-        
-      </AppWrapper>
+      <AppPageTitle title="Test Component" />
+      <AppWrapper>Blank Content</AppWrapper>
     </>
   );
 };

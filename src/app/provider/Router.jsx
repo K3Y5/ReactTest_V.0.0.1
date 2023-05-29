@@ -32,6 +32,16 @@ const Router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/transaction",
+    element: <ContentLayout /> /* Default Layout */,
+    children: [
+      {
+        path: "project",
+        element: <Index />,
+      },
+    ],
+  },
 
   /* Auth Routing */
   {

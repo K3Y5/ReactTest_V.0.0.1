@@ -12,6 +12,20 @@ import {
 } from "react-bootstrap";
 import MaterialReactTable from "material-react-table";
 import { CircularProgress } from "@mui/material";
+import { useLocation } from "react-router-dom";
+
+function firstTextUpper(text) {
+  const words = text.split(" ");
+  let result = "";
+  words
+    .map((word) => {
+      const upper = word[0].toUpperCase();
+      const lower = word.substring(1);
+      return (result = upper + lower);
+    })
+    .join(" ");
+  return result;
+}
 
 export const AppPreloader = () => {
   return (
@@ -27,9 +41,13 @@ export const AppPreloader = () => {
   );
 };
 
-export const AppBreadcrumb = ({ title, subTitle, item = [] }) => {
+export const AppPageTitle = ({ title, subTitle, breadcrumb = false }) => {
+  const location = useLocation();
+  let pathLocation = location.pathname;
+  const explodeLocation = pathLocation.split("/").filter((element) => element);
+
   return (
-    <div className="content-header">
+    <div className="content-header py-4 px-1">
       <div className="mb-1 ml-2">
         <div className="row">
           <div className="col-8 float-left">
@@ -49,19 +67,26 @@ export const AppBreadcrumb = ({ title, subTitle, item = [] }) => {
               </>
             </div>
           </div>
-          <div className="col-4 d-none d-sm-block">
-            {item.length > 0 ? (
-              <>
-                <Breadcrumb className="float-right" style={{ padding: "10px" }}>
-                  <Breadcrumb.Item>Home</Breadcrumb.Item>
-                  <Breadcrumb.Item href="#">Library</Breadcrumb.Item>
-                  <Breadcrumb.Item active>Data</Breadcrumb.Item>
-                </Breadcrumb>
-              </>
-            ) : (
-              ""
-            )}
-          </div>
+          {breadcrumb ? (
+            <div className="col-4 d-none d-sm-block">
+              <Breadcrumb className="float-right" style={{ padding: "10px" }}>
+                <Breadcrumb.Item href="/">
+                  <span className="fa fa-home">&nbsp;</span>
+                  Home
+                </Breadcrumb.Item>
+                {explodeLocation.map(function (value, index) {
+                  return (
+                    <Breadcrumb.Item active key={index}>
+                      {/* {value.toUpperCase()} */}
+                      {firstTextUpper(value)}
+                    </Breadcrumb.Item>
+                  );
+                })}
+              </Breadcrumb>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>
@@ -175,6 +200,54 @@ export const AppButton = ({
   );
 };
 
+export const AppCard = ({
+  setCard = { className: "", colors: "grey" },
+  enableCardHeader = true,
+  setCardHeader = { className: "", title: false },
+  enableCardBody = true,
+  setCardBody = { className: "", content: false },
+  enableCardFooter = false,
+  setCardFooter = { className: "", content: false },
+}) => {
+  return (
+    <Card className={`bg-${setCard.colors}`}>
+      {enableCardHeader ? (
+        enableCardHeader !== false ? (
+          <Card.Header>
+            {setCardHeader.title === false
+              ? "Example Title"
+              : setCardHeader.title}
+          </Card.Header>
+        ) : (
+          <></>
+        )
+      ) : (
+        <></>
+      )}
+      {enableCardBody ? (
+        enableCardBody !== false ? (
+          <Card.Body>{setCardBody.content}</Card.Body>
+        ) : (
+          <></>
+        )
+      ) : (
+        <></>
+      )}
+      {enableCardFooter ? (
+        enableCardFooter !== false ? (
+          <Card.Footer className="text-muted">
+            {setCardFooter.content}
+          </Card.Footer>
+        ) : (
+          <></>
+        )
+      ) : (
+        <></>
+      )}
+    </Card>
+  );
+};
+
 export const AppTable = ({
   loading = false,
   column = [],
@@ -212,52 +285,5 @@ export const AppTable = ({
         renderTopToolbarCustomActions={topToolbar ? topToolbar : <></>}
       />
     </>
-  );
-};
-
-export const AppCard = ({
-  enableCardHeader = true,
-  setCardHeader = { className: "", title: false },
-  enableCardBody = true,
-  setCardBody = { className: "", content: false },
-  enableCardFooter = false,
-  setCardFooter = { className: "", content: false },
-}) => {
-  return (
-    <Card>
-      {enableCardHeader ? (
-        enableCardHeader !== false ? (
-          <Card.Header>
-            {setCardHeader.title === false
-              ? "Example Title"
-              : setCardHeader.title}
-          </Card.Header>
-        ) : (
-          <></>
-        )
-      ) : (
-        <></>
-      )}
-      {enableCardBody ? (
-        enableCardBody !== false ? (
-          <Card.Body>{setCardBody.content}</Card.Body>
-        ) : (
-          <></>
-        )
-      ) : (
-        <></>
-      )}
-      {enableCardFooter ? (
-        enableCardFooter !== false ? (
-          <Card.Footer className="text-muted">
-            {setCardFooter.content}
-          </Card.Footer>
-        ) : (
-          <></>
-        )
-      ) : (
-        <></>
-      )}
-    </Card>
   );
 };

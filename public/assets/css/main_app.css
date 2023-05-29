@@ -5,3 +5,10 @@ body::-webkit-scrollbar{
 .dropdown-toggle::after{
     content: none;
 }
+
+a{
+    color: #008489;
+}
+a:hover{
+    color: #000000;
+}

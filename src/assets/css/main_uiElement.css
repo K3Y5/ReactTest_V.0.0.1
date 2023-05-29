@@ -1,7 +1,6 @@
-.MuiButtonBase-root {
-  /* cursor: not-allowed;
-  pointer-events: auto; */
-  background-color: unset;
+.bg-grey{
+    background-color: #F6F7F8;
+    color: #000000;
 }
 
 .btn-teal{
@@ -72,3 +71,8 @@
 .card-teal{
     border-color: #008489;
 }
+/* 
+.py-2{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+} */
